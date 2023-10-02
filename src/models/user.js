@@ -16,7 +16,10 @@ const userShema = new mongoose.Schema({
     required: true,
     minLength: 5,
   },
-  borrowedBooks: [{ type: mongoose.Schema.Types.ObjectId, ref: "book" }],
+  borrowedBooks: {
+    type: [{ type: mongoose.Schema.Types.ObjectId, ref: "book" }],
+    default: [],
+  },
 });
 
 module.exports = mongoose.model("user", userShema);
